@@ -997,7 +997,46 @@
 .mobile-screen--feature { background: linear-gradient(180deg, #7c3aed, #f3e8ff 38%, #fff 100%); }
 .mobile-screen--light { background: linear-gradient(180deg, #a855f7, #ecfeff 38%, #fff 100%); }
 
+.project-sidebar { max-width: 100%; }
+.sidebar-thumb {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  border-radius: 1rem;
+  border: 1px solid rgba(255,255,255,.10);
+  overflow: hidden;
+  display: flex;
+  align-items: end;
+  justify-content: flex-start;
+  padding: .65rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: .88rem;
+  font-weight: 700;
+  color: #fff;
+}
+.sidebar-thumb span { position: relative; z-index: 1; line-height: 1.05; }
+.sidebar-thumb--one { background: linear-gradient(180deg, #4c1d95, #0f172a 70%); }
+.sidebar-thumb--two { background: linear-gradient(180deg, #0ea5e9, #111827 70%); }
+.sidebar-thumb--three { background: linear-gradient(180deg, #9333ea, #111827 70%); }
+.sidebar-thumb--four { background: linear-gradient(180deg, #7c3aed, #1f2937 70%); }
+.sidebar-thumb--five { background: linear-gradient(180deg, #0f766e, #111827 70%); }
+.sidebar-thumb--six { background: linear-gradient(180deg, #111827, #7c2d12 70%); }
+.tool-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.8rem;
+  border-radius: .8rem;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.05);
+  padding: .55rem .8rem;
+  font-size: .78rem;
+  font-weight: 600;
+  color: #dbe6f4;
+}
 
+@media (max-width: 1279px) {
+  .project-sidebar { margin-top: 1.5rem; }
+}
 
 @media (max-width: 767px) {
   .project-preview { aspect-ratio: 4 / 3; }
@@ -1011,4 +1050,85 @@
   .scoreboard-ui__grid { gap: .45rem; }
   .mobile-mockup { min-width: 60px; border-radius: .85rem; }
   .mobile-screen::after { border-radius: .85rem; }
+  .project-sidebar .sidebar-thumb { border-radius: .8rem; }
 }
+
+
+/* ===== Project image cards from portfolio deck ===== */
+.project-image-wrap {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255,255,255,.08);
+  background: linear-gradient(135deg, rgba(22,28,53,.95), rgba(9,13,26,.95));
+  aspect-ratio: 16 / 10;
+}
+.project-image-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(5,8,22,0) 0%, rgba(5,8,22,.15) 45%, rgba(5,8,22,.55) 100%);
+  pointer-events: none;
+}
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform .55s ease;
+}
+.project-card:hover .project-image {
+  transform: scale(1.03);
+}
+.project-image-cta {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  border: 1px solid rgba(255,255,255,.1);
+  background: rgba(8,12,24,.72);
+  backdrop-filter: blur(12px);
+  color: #e2e8f0;
+  padding: .55rem .8rem;
+  border-radius: 999px;
+  font-size: .75rem;
+  font-weight: 600;
+}
+.portfolio-mini-note {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .85rem;
+  line-height: 1.6;
+  color: #94a3b8;
+}
+.portfolio-mini-note i { color: #67e8f9; }
+.hero-focus-text {
+  transition: opacity .25s ease, transform .25s ease;
+}
+.hero-focus-text.is-swapping {
+  opacity: .35;
+  transform: translateY(2px);
+}
+.skill-chip.is-bouncing {
+  transform: translateY(-3px) scale(1.02);
+  border-color: rgba(103,232,249,.35) !important;
+  box-shadow: 0 14px 35px rgba(34,211,238,.10);
+}
+@media (max-width: 767px) {
+  .project-image-wrap { aspect-ratio: 4 / 3; }
+}
+
+
+/* Recruiter-ready project hierarchy */
+#projects .project-card { display:flex; height:100%; flex-direction:column; }
+#projects .project-card > div:last-child { flex:1; }
+#projects .project-card-featured { border-color:rgba(103,232,249,.13); background:radial-gradient(circle at 12% 0%, rgba(34,211,238,.06), transparent 28%), linear-gradient(135deg, rgba(255,255,255,.085), rgba(255,255,255,.032)); }
+#projects .project-image-wrap-featured { aspect-ratio:16 / 9; }
+#projects .project-card-featured .project-image { object-position:center; }
+#projects .project-badge { max-width:calc(100% - 5.3rem); white-space:normal; line-height:1.25; }
+@media (max-width:767px){ #projects .project-card-featured .project-image-wrap-featured{aspect-ratio:4 / 3;} }
